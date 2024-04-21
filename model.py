@@ -123,9 +123,9 @@ class PixelCNN(nn.Module):
 
         # Interpolation to blend class embedding with image data
         blend_ratio = 0.7  # Adjust the blending ratio
-        blended_emb = (x * blend_ratio) + (class_emb * (1 - blend_ratio))
+        # blended_emb = (x * blend_ratio) + (class_emb * (1 - blend_ratio))
 
-        x = torch.cat((x, blended_emb), 1)  # [B, 35, 32, 32]
+        x = torch.cat((x * blend_ratio, class_emb * (1 - blend_ratio)), 1)  # [B, 35, 32, 32]
 
 
         # similar as done in the tf repo :
