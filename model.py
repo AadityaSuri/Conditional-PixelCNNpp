@@ -122,7 +122,7 @@ class PixelCNN(nn.Module):
         class_emb = class_emb.expand(-1, -1, x.shape[2], x.shape[3])  # [B, 32, 32, 32]
 
         # Interpolation to blend class embedding with image data
-        blend_ratio = 0.65  # Adjust the blending ratio
+        blend_ratio = 0.7  # Adjust the blending ratio
         blended_emb = (x * blend_ratio) + (class_emb * (1 - blend_ratio))
 
         x = torch.cat((x, blended_emb), 1)  # [B, 35, 32, 32]
