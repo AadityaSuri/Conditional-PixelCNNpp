@@ -1,0 +1,13 @@
+python3 pcnn_train.py \
+--batch_size 8 \
+--sample_batch_size 192 \
+--sampling_interval 25 \
+--save_interval 10 \
+--dataset cpen455 \
+--nr_resnet 2 \
+--lr 0.001 \
+--lr_decay 0.99995 \
+--max_epochs 501 \
+--nr_filters 160 \
+--nr_logistic_mix 10 \
+--en_wandb True \
