@@ -26,8 +26,7 @@ def sample_(model, gen_data_dir, sample_batch_size = 100, obs = (3,32,32), sampl
 if __name__ == "__main__":
     ref_data_dir = "data/test"
     gen_data_dir = "samples"
-    BATCH_SIZE=192  # I changed this to 192 because I was getting the FID error for generating less than 48 images per
-                    # class = 192.
+    BATCH_SIZE=128
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print("Using {} device".format(device))
 
@@ -41,7 +40,7 @@ if __name__ == "__main__":
 
     model = model.to(device)
     model = model.eval()
-    sample_(model=model, gen_data_dir=gen_data_dir, sample_batch_size=BATCH_SIZE)
+    sample_(model=model, gen_data_dir=gen_data_dir, sample_batch_size=100)
     #End of your code
     paths = [gen_data_dir, ref_data_dir]
     print("#generated images: {:d}, #reference images: {:d}".format(
